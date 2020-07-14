@@ -2,27 +2,17 @@
 
 namespace App\Console\Commands;
 
-use Carbon\Carbon;
 use Illuminate\Console\GeneratorCommand;
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
 
-class MakeModulesMigration extends GeneratorCommand
+class MakeModulesControllers extends GeneratorCommand
 {
-    private $now = '';
-
-    public function __construct(Filesystem $files)
-    {
-        parent::__construct($files);
-        $this->now = Carbon::now();
-    }
-
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'modules:migration 
+    protected $signature = 'modules:controller
                         {name : The name of migration file}
                         {--path= : The path of migration file}';
 
@@ -31,14 +21,14 @@ class MakeModulesMigration extends GeneratorCommand
      *
      * @var string
      */
-    protected $description = 'Make a new modules migration';
+    protected $description = 'Make a new modules controller';
 
     /**
      * The type of class being generated.
      *
      * @var string
      */
-    protected $type = 'Migrations';
+    protected $type = 'Controllers';
 
     /**
      * Get the stub file for the generator.
@@ -47,12 +37,12 @@ class MakeModulesMigration extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . '/stubs/migration.stub';
+        return __DIR__ . '/stubs/controller.stub';
     }
 
     protected function getNameInput()
     {
-        return trim(date_format($this->now, 'Y_m_d_His') . '_' . $this->argument('name'));
+        return trim($this->argument('name'));
     }
 
     /**
@@ -64,7 +54,7 @@ class MakeModulesMigration extends GeneratorCommand
      */
     protected function replaceClass($stub, $name)
     {
-        $class = str_replace($this->getNamespace($name) .'\\' . date_format($this->now, 'Y_m_d_His') . '_', '', $name);
+        $class = str_replace($this->getNamespace($name) .'\\', '', $name);
 
         return str_replace(['DummyClass', '{{ class }}', '{{class}}'], Str::studly($class), $stub);
     }

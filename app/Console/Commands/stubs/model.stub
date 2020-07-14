@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Category\Models;
+namespace DummyNamespace;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class DummyClass extends Model
 {
     protected $table = '';
 

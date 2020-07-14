@@ -20,7 +20,7 @@ class ModulesServiceProvider extends ServiceProvider
      * alias => path
      */
     private $configFile = [
-        'categoryconfig' => 'Category/Configs/categoryconfig.php',
+        'CategoryConfig' => 'Category/Configs/CategoryConfig.php',
     ];
 
     /**
@@ -58,7 +58,6 @@ class ModulesServiceProvider extends ServiceProvider
         // boot migration
         if (File::exists($modulePath . "Migrations")) {
             $this->loadMigrationsFrom($modulePath . "Migrations");
-//            dd($modulePath . "Migrations");
         }
 
         // boot languages
