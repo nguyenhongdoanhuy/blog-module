@@ -69,5 +69,10 @@ class ModulesServiceProvider extends ServiceProvider
         if (File::exists($modulePath . "Views")) {
             $this->loadViewsFrom($modulePath . "Views", $moduleName);
         }
+
+        // boot factories
+        if (File::exists($modulePath . "Factories")) {
+            $this->loadFactoriesFrom($modulePath . "Factories");
+        }
     }
 }

@@ -4,30 +4,30 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 
-class MakeModulesConfigs extends GeneratorCommand
+class MakeModulesFactories extends GeneratorCommand
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'modules:config
-                        {name : The name of config file}
-                        {--path= : The path of config file}';
+    protected $signature = 'modules:factory
+                        {name : The name of factory file}
+                        {--path= : The path of factory file}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Make a new modules config';
+    protected $description = 'Make a new modules factory';
 
     /**
      * The type of class being generated.
      *
      * @var string
      */
-    protected $type = 'Configs';
+    protected $type = 'Factories';
 
     /**
      * Get the stub file for the generator.
@@ -36,7 +36,7 @@ class MakeModulesConfigs extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . '/stubs/config.stub';
+        return __DIR__ . '/stubs/factory.stub';
     }
 
     protected function getNameInput()
